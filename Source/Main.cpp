@@ -96,4 +96,4 @@ VOID MessageLoop()
 	}
 }
 
-#pragma enregion Functions
+#pragma endregion Functions
