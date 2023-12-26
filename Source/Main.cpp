@@ -9,6 +9,17 @@ WCHAR WindowTitle[MAX_NAME_STRING];
 INT WindowWidth;
 INT WindowHeight;
 
+LRESULT CALLBACK WindowProcess(HWND Hwnd, UINT message, WPARAM wparam, LPARAM lparam)
+{
+	switch (message)
+	{
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	}
+	return DefWindowProc(Hwnd, message, wparam, lparam);
+}
+
 int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, INT)
 {
 	// Initialize global variables
@@ -38,7 +49,7 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, INT)
 
 	wcex.hInstance = HInstance();
 
-	wcex.lpfnWndProc = DefWindowProc;
+	wcex.lpfnWndProc = WindowProcess;
 
 	RegisterClassEx(&wcex);
 
