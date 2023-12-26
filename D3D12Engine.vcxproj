@@ -87,7 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Source\d3dx12.h" />
     <ClInclude Include="Source\PreCompiledHeaders.h" />
+    <ClInclude Include="Source\UploadBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="D3D12Engine.rc" />

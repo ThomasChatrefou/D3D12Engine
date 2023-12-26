@@ -52,7 +52,58 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_MAINICON               ICON                    "Content\\Icons\\Icon.ico"
+IDI_MAINICON            ICON                    "Content\\Icons\\Icon.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040c04b0"
+        BEGIN
+            VALUE "CompanyName", "PanneMoteur"
+            VALUE "FileDescription", "D3D12Engine"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "D3D12Eng.exe"
+            VALUE "LegalCopyright", "Copyright (C) 2023"
+            VALUE "OriginalFilename", "D3D12Eng.exe"
+            VALUE "ProductName", "D3D12Engine"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40c, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_PERGAMENAME         "D3D12Engine"
+    IDS_WINDOWCLASS         "GameWindow"
+END
 
 #endif    // Français (France) resources
 /////////////////////////////////////////////////////////////////////////////
