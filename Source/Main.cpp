@@ -6,6 +6,8 @@ WCHAR WindowTitle[MAX_NAME_STRING];
 INT WindowWidth;
 INT WindowHeight;
 
+HICON hIcon;
+
 LRESULT CALLBACK WindowProcess(HWND Hwnd, UINT message, WPARAM wparam, LPARAM lparam)
 {
 	switch (message)
@@ -25,7 +27,7 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, INT)
 	wcscpy_s(WindowTitle, TEXT("D3D12Window"));
 	WindowWidth = 1366;
 	WindowHeight = 768;
-
+	hIcon = LoadIcon(HInstance(), MAKEINTRESOURCE(IDI_MAINICON));
 	// Create window class
 
 	WNDCLASSEX wcex;
@@ -38,8 +40,8 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, INT)
 	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)GetStockObject(NULL_BRUSH);
 
-	wcex.hIcon = LoadIcon(0, IDI_APPLICATION);
-	wcex.hIconSm = LoadIcon(0, IDI_APPLICATION);
+	wcex.hIcon = hIcon;
+	wcex.hIconSm = hIcon;
 
 	wcex.lpszClassName = WindowClass;
 	wcex.lpszMenuName = nullptr;
