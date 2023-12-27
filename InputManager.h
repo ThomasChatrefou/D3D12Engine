@@ -1,5 +1,5 @@
 #pragma once
-#include <Windows.h>
+
 
 class InputManager
 {
@@ -13,6 +13,7 @@ public:
 private: 
 	bool keys[256];
 };
+#include <Windows.h>
 InputManager::InputManager()
 {
 	for (int i = 0; i < 256; i++)

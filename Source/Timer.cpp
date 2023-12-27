@@ -1,5 +1,5 @@
-#include "Timer.h"
-
+#include "PreCompiledHeaders.h"
+#include "../Timer.h"
 Timer::Timer()
 {
 	start = std::chrono::high_resolution_clock::now();
@@ -12,7 +12,7 @@ float Timer::DeltaTime()const
 }
 void Timer::Restart()
 {
-	__int64 currTime;
+	__int64 currTime=0;
 	mBaseTime = currTime;
 	mPrevTime = currTime;
 	mStopTime = 0;
@@ -26,7 +26,7 @@ bool Timer::Stop()
 		return false;
 	else
 	{
-		__int64 currTime;
+		__int64 currTime =0;
 		mStopTime = currTime;
 		stop = std::chrono::high_resolution_clock::now();
 		isrunning = false;
@@ -35,7 +35,7 @@ bool Timer::Stop()
 }
 bool Timer::Start()
 {
-	__int64 startTime;
+	__int64 startTime = 0;
 	if (isrunning)
 	{
 		return false;
@@ -59,8 +59,9 @@ void Timer::Tick()
 		return;
 	}
 	__int64 currTime;
-	
-	mCurrTime = currTime;
+	auto Currtime = std::chrono::high_resolution_clock::now();
+	auto sec = std::chrono::duration_cast<std::chrono::seconds>(Currtime.time_since_epoch());
+	currTime = sec.count();
 
 	// Time difference between this frame and the previous.
 	mDeltaTime = (mCurrTime - mPrevTime) * mSecondsPerCount;
