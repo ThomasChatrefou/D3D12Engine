@@ -24,11 +24,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\PreCompiledHeaders.cpp">
+      <Filter>Source\pch</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Main.cpp">
       <Filter>Source\Private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\PreCompiledHeaders.cpp">
-      <Filter>Source\pch</Filter>
+    <ClCompile Include="Source\Renderer.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Application.cpp">
+      <Filter>Source\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,7 +47,10 @@
     <ClInclude Include="Source\d3dx12.h">
       <Filter>Source\Public</Filter>
     </ClInclude>
-    <ClInclude Include="Source\UploadBuffer.h">
+    <ClInclude Include="Source\Renderer.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Application.h">
       <Filter>Source\Public</Filter>
     </ClInclude>
   </ItemGroup>
