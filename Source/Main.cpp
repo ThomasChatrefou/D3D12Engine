@@ -1,4 +1,5 @@
 #include "PreCompiledHeaders.h"
+#include "Transform.h"
 
 #pragma region GlobalVariables
 
@@ -18,6 +19,7 @@ VOID InitializeVariables();
 VOID CreateWindowClass();
 VOID InitializeWindow();
 VOID MessageLoop();
+VOID TransformQuatTest();
 
 #pragma endregion FunctionsPredeclarations
 
@@ -26,6 +28,7 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, INT)
 	InitializeVariables();
 	CreateWindowClass();
 	InitializeWindow();
+	TransformQuatTest();
 	MessageLoop();
 	return 0;
 }
@@ -94,6 +97,12 @@ VOID MessageLoop()
 			DispatchMessage(&msg);
 		}
 	}
+}
+
+VOID TransformQuatTest()
+{
+	Transform transformClass;
+	transformClass.TransformTest();
 }
 
 #pragma endregion Functions

@@ -1,6 +1,3 @@
-#include <DirectXMath.h>
-#include <Windows.h>
-
 using namespace DirectX;
 
 struct Transform
@@ -34,5 +31,5 @@ public:
 	void RotateWorldX(float angle);
 	void RotateWorldY(float angle);
 	void RotateWorldZ(float angle);
-
+	void TransformTest();
 };
