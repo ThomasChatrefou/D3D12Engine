@@ -154,12 +154,39 @@ void Transform::RotateWorldZ(float angle)
 	RotateWorldFromRotationQ(*this, rotationQuat);
 }
 
+
+float RandomFloat(float min, float max)
+{
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<float> dis(min, max);
+	return dis(gen);
+}
+
+XMMATRIX GenerateRandomTransformMatrix()
+{
+	XMVECTOR position = XMVectorSet(RandomFloat(-10.0f, 10.0f), RandomFloat(-10.0f, 10.0f), RandomFloat(-10.0f, 10.0f), 1.0f);
+	XMVECTOR rotationAxis = XMVectorSet(RandomFloat(-1.0f, 1.0f), RandomFloat(-1.0f, 1.0f), RandomFloat(-1.0f, 1.0f), 0.0f);
+	XMVECTOR rotation = XMQuaternionRotationAxis(rotationAxis, RandomFloat(0.0f, XM_2PI));
+	XMVECTOR scale = XMVectorSet(RandomFloat(0.5f, 2.0f), RandomFloat(0.5f, 2.0f), RandomFloat(0.5f, 2.0f), 1.0f);
+
+	XMMATRIX translationMatrix = XMMatrixTranslationFromVector(position);
+	XMMATRIX rotationMatrix = XMMatrixRotationQuaternion(rotation);
+	XMMATRIX scaleMatrix = XMMatrixScalingFromVector(scale);
+
+	XMMATRIX transformMatrix = scaleMatrix * rotationMatrix * translationMatrix;
+
+	return transformMatrix;
+}
+
+
+
 void Transform::TransformTest() {
 
-	// XMMATRIX randomTransformMatrix = GenerateRandomTransformMatrix();
+	XMMATRIX randomTransformMatrix = GenerateRandomTransformMatrix();
 
-	qRot = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
-	//FromMatrix(&randomTransformMatrix);
+	//qRot = XMVectorSet(1.0f, 0.0f, 0.0f, 0.0f);
+	FromMatrix(&randomTransformMatrix);
 
 	float x = XMVectorGetX(qRot);
 	float y = XMVectorGetY(qRot);
@@ -172,7 +199,7 @@ void Transform::TransformTest() {
 		logFile << "Quaternion Base : " << x << " " << y << " " << z << " " << w << std::endl;
 	}
 	
-	RotateRoll(1.5708);
+	Rotate(1, 1.5708, 0);
 
 	x = XMVectorGetX(qRot);
 	y = XMVectorGetY(qRot);
@@ -184,7 +211,7 @@ void Transform::TransformTest() {
 		logFile << "Quaternion After : " << x << " " << y << " " << z << " " << w << std::endl;
 	}
 
-	//RotateRoll(-1.5708);
+	Rotate(-1, -1.5708,  0);
 
 	x = XMVectorGetX(qRot);
 	y = XMVectorGetY(qRot);
@@ -199,27 +226,3 @@ void Transform::TransformTest() {
 	}
 
 }
-//
-//float Transform::RandomFloat(float min, float max)
-//{
-//	std::random_device rd;
-//	std::mt19937 gen(rd());
-//	std::uniform_real_distribution<float> dis(min, max);
-//	return dis(gen);
-//}
-//
-//XMMATRIX Transform::GenerateRandomTransformMatrix()
-//{
-//	XMVECTOR position = XMVectorSet(RandomFloat(-10.0f, 10.0f), RandomFloat(-10.0f, 10.0f), RandomFloat(-10.0f, 10.0f), 1.0f);
-//	XMVECTOR rotationAxis = XMVectorSet(RandomFloat(-1.0f, 1.0f), RandomFloat(-1.0f, 1.0f), RandomFloat(-1.0f, 1.0f), 0.0f);
-//	XMVECTOR rotation = XMQuaternionRotationAxis(rotationAxis, RandomFloat(0.0f, XM_2PI));
-//	XMVECTOR scale = XMVectorSet(RandomFloat(0.5f, 2.0f), RandomFloat(0.5f, 2.0f), RandomFloat(0.5f, 2.0f), 1.0f);
-//
-//	XMMATRIX translationMatrix = XMMatrixTranslationFromVector(position);
-//	XMMATRIX rotationMatrix = XMMatrixRotationQuaternion(rotation);
-//	XMMATRIX scaleMatrix = XMMatrixScalingFromVector(scale);
-//
-//	XMMATRIX transformMatrix = scaleMatrix * rotationMatrix * translationMatrix;
-//
-//	return transformMatrix;
-//}
