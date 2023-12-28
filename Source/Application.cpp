@@ -1,13 +1,6 @@
 #include "PreCompiledHeaders.h"
 #include "Application.h"
-
-inline void ThrowIfFailed(HRESULT hr)
-{
-	if (FAILED(hr))
-	{
-		throw std::exception();
-	}
-}
+#include "Renderer.h"
 
 LRESULT CALLBACK WindowProcess(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 App* App::m_app = nullptr;
@@ -20,12 +13,17 @@ App::App()
 
 App::~App()
 {
+	delete m_renderer;
 }
 
 bool App::Initialize()
 {
 	if (!InitWindow()) return false;
-	if (!InitDX()) return false;
+
+	m_renderer = new Renderer();
+	if (m_renderer->Initialize()) return false;
+
+	MessageBox(0, L"Renderer Initialize done", 0, 0);
 	return true;
 }
 
@@ -109,47 +107,6 @@ bool App::InitializeWindow()
 
 	ShowWindow(m_mainWindow, SW_SHOW);
 	UpdateWindow(m_mainWindow);
-	return true;
-}
-
-bool App::InitDX()
-{
-	IDXGIFactory7* factory;
-	UINT factoryFlags = 0;
-	HRESULT result = CreateDXGIFactory2(factoryFlags, IID_PPV_ARGS(&factory));
-
-	IDXGIAdapter1* adapter;
-	for (UINT adapterIndex = 0;
-		DXGI_ERROR_NOT_FOUND != factory->EnumAdapters1(adapterIndex, &adapter);
-		++adapterIndex)
-	{
-		DXGI_ADAPTER_DESC1 desc;
-		adapter->GetDesc1(&desc);
-
-		// Don't select the Basic Render Driver adapter.
-		if (desc.Flags & DXGI_ADAPTER_FLAG_SOFTWARE)
-		{
-			continue;
-		}
-
-		// Check if the adapter supports Direct3D 12, and use that for the rest
-		// of the application
-		if (SUCCEEDED(D3D12CreateDevice(adapter, D3D_FEATURE_LEVEL_12_0,
-			_uuidof(ID3D12Device), nullptr)))
-		{
-			break;
-		}
-
-		// Else we won't use this iteration's adapter, so release it
-		adapter->Release();
-	}
-	
-	// Declare Handles
-	ID3D12Device* device;
-
-	// Create Device
-	ThrowIfFailed(D3D12CreateDevice(adapter, D3D_FEATURE_LEVEL_12_0, IID_PPV_ARGS(&device)));
-
 	return true;
 }
 

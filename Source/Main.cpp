@@ -1,7 +1,8 @@
 ﻿#include "PreCompiledHeaders.h"
-
-#include "PreCompiledHeaders.h"
 #include "Application.h"
+
+#pragma comment(lib, "d3d12.lib")
+#pragma comment(lib, "dxgi.lib")
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, PSTR, int)
 {

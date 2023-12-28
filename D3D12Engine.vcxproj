@@ -57,6 +57,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>PreCompiledHeaders.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\Documents\GTECH5\D3D12Project\D3D12Engine\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -73,6 +74,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>PreCompiledHeaders.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\Documents\GTECH5\D3D12Project\D3D12Engine\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

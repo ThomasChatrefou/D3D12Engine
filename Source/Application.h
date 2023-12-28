@@ -1,3 +1,5 @@
+class Renderer;
+
 class App
 {
 public:
@@ -32,4 +34,6 @@ private:
 	int m_windowHeight = 768;
 
 	HICON m_hIcon;
+
+	Renderer* m_renderer;
 };
