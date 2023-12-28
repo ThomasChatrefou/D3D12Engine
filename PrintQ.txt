@@ -1,9 +1,0 @@
-qRot : qRot * qConjugate0 0 0.707108 0.707106
-rotationQuat0 0 0.707108 0.707106
-Conjugate-1 -0 -0 0
-qRot : Rotat * qRot0.707106 -0.707108 0 0
-qRot : qRot * qConjugate0 0 0.707108 0.707106
-rotationQuat 0 0 0.707108 0.707106
-Conjugate -0 -0 -0.707108 0.707106
-qRot : Rotat * qRot 0.707106 -0.707108 0 0
-qRot : qRot * qConjugate -3.63588e-06 -1 0 0

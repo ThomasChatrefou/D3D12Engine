@@ -1,3 +1,0 @@
-Quaternion Base : 1 0 0 0
-Quaternion After : -3.63588e-06 -1 0 0
-Quaternion AfterAfter : -3.63588e-06 -1 0 0
