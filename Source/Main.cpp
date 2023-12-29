@@ -1,4 +1,4 @@
-﻿#include "PreCompiledHeaders.h"
+#include "PreCompiledHeaders.h"
 #include "Application.h"
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, PSTR, int)

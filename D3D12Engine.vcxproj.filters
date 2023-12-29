@@ -36,6 +36,9 @@
     <ClCompile Include="Source\Renderer.cpp">
       <Filter>Source\Private</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Transform.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\PreCompiledHeaders.h">
@@ -51,6 +54,9 @@
       <Filter>Source\Public</Filter>
     </ClInclude>
     <ClInclude Include="Source\Renderer.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transform.h">
       <Filter>Source\Public</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,7 @@
 #include "dxgi1_6.h"
 
 #include "../resource.h"
+#include "DirectXMath.h"
 
 #define MAX_NAME_STRING 256
 #define HInstance() GetModuleHandle(NULL)
