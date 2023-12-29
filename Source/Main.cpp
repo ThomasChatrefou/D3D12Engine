@@ -28,7 +28,7 @@ int CALLBACK WinMain(HINSTANCE, HINSTANCE, LPSTR, INT)
 	InitializeVariables();
 	CreateWindowClass();
 	InitializeWindow();
-	TransformQuatTest();
+	//TransformQuatTest();
 	MessageLoop();
 	return 0;
 }
