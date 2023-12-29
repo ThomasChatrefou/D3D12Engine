@@ -5,8 +5,8 @@ class Timer
 {
 public:
 	Timer();
-	float TotalTime()const;
-	float DeltaTime()const;
+	float GetTotalTime()const;
+	float GetDeltaTime()const;
 
 	void Restart();
 	bool Stop();

@@ -85,17 +85,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application.cpp" />
+    <ClCompile Include="Source\Camera.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\PreCompiledHeaders.cpp" />
     <ClCompile Include="Source\Renderer.cpp" />
+    <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Source\Application.h" />
+    <ClInclude Include="Source\Camera.h" />
     <ClInclude Include="Source\d3dx12.h" />
+    <ClInclude Include="Source\InputManager.h" />
     <ClInclude Include="Source\PreCompiledHeaders.h" />
     <ClInclude Include="Source\Renderer.h" />
+    <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\Transform.h" />
   </ItemGroup>
   <ItemGroup>

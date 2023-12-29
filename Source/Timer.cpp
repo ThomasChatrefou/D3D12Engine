@@ -1,12 +1,17 @@
 #include "PreCompiledHeaders.h"
-#include "../Timer.h"
+#include "Timer.h"
+
 Timer::Timer()
 {
 	start = std::chrono::high_resolution_clock::now();
 	stop = std::chrono::high_resolution_clock::now();
 }
 
-float Timer::DeltaTime()const
+float Timer::GetTotalTime()const
+{
+	return (float)mCurrTime;
+}
+float Timer::GetDeltaTime()const
 {
 	return (float)mDeltaTime;
 }
@@ -14,11 +19,12 @@ void Timer::Restart()
 {
 	__int64 currTime=0;
 	mBaseTime = currTime;
-	mPrevTime = currTime;
 	mStopTime = 0;
 	mPausedTime = false;
 	isrunning = true;
 	start = std::chrono::high_resolution_clock::now();
+	mPrevTime = std::chrono::duration_cast<std::chrono::seconds>(start.time_since_epoch()).count();
+	mCurrTime = 0;
 }
 bool Timer::Stop()
 {
@@ -43,11 +49,12 @@ bool Timer::Start()
 	else
 	{
 		mPausedTime += (startTime - mStopTime);
-		mPrevTime = startTime;
 		mStopTime = 0;
 		mPausedTime = false;
 		start = std::chrono::high_resolution_clock::now();
+		mPrevTime = std::chrono::duration_cast<std::chrono::seconds>(start.time_since_epoch()).count();
 		isrunning = true;
+		mCurrTime = 0;
 		return true;
 	}
 }
@@ -58,16 +65,16 @@ void Timer::Tick()
 		mDeltaTime = 0.0;
 		return;
 	}
-	__int64 currTime;
-	auto Currtime = std::chrono::high_resolution_clock::now();
-	auto sec = std::chrono::duration_cast<std::chrono::seconds>(Currtime.time_since_epoch());
-	currTime = sec.count();
+
+	auto currChronoTime = std::chrono::high_resolution_clock::now();
+	auto sec = std::chrono::duration_cast<std::chrono::seconds>(currChronoTime.time_since_epoch());
+	auto currChronoTimeInSec = sec.count();
 
 	// Time difference between this frame and the previous.
-	mDeltaTime = (mCurrTime - mPrevTime) * mSecondsPerCount;
+	mDeltaTime = (currChronoTimeInSec - mPrevTime) * mSecondsPerCount;
 
 	// Prepare for next frame.
-	mPrevTime = mCurrTime;
+	mPrevTime = currChronoTimeInSec;
 
 	// Force nonnegative.  The DXSDK's CDXUTTimer mentions that if the 
 	// processor goes into a power save mode or we get shuffled to another
@@ -76,4 +83,6 @@ void Timer::Tick()
 	{
 		mDeltaTime = 0.0;
 	}
+
+	mCurrTime += mDeltaTime;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "PreCompiledHeaders.h"
 #include "DirectXMath.h"
-#include "../camera.h"
+#include "Camera.h"
 
 Camera::Camera() : pitch(0.0f), yaw(0.0f), moveSpeed(0.05f), rotationSpeed(0.002f)
 {

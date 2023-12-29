@@ -1,4 +1,5 @@
 class Renderer;
+class Timer;
 
 class App
 {
@@ -27,8 +28,8 @@ private:
 
 	void TransformQuatTest();
 
-	void Update();
-	void Draw();
+	void Update(const Timer& timer);
+	void Draw(const Timer& timer);
 
 	HWND m_mainWindow;
 
@@ -41,4 +42,5 @@ private:
 	HICON m_hIcon;
 
 	Renderer* m_renderer;
+	Timer* m_timer;
 };

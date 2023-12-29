@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Renderer.h"
 #include "Transform.h"
+#include "Timer.h"
 
 LRESULT CALLBACK WindowProcess(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 App* App::m_app = nullptr;
@@ -15,6 +16,7 @@ App::App()
 App::~App()
 {
 	delete m_renderer;
+	delete m_timer;
 }
 
 bool App::Initialize()
@@ -24,6 +26,8 @@ bool App::Initialize()
 	m_renderer = new Renderer();
 	if (!m_renderer->Initialize()) return false;
 
+	m_timer = new Timer();
+
 	MessageBox(0, L"Renderer Initialize done", 0, 0);
 	return true;
 }
@@ -31,7 +35,7 @@ bool App::Initialize()
 int App::Run()
 {
 	MSG msg = { 0 };
-
+	m_timer->Restart();
 	while (msg.message != WM_QUIT)
 	{
 		if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
@@ -41,8 +45,9 @@ int App::Run()
 		}
 		else
 		{
-			Update();
-			Draw();
+			m_timer->Tick();
+			Update(*m_timer);
+			Draw(*m_timer);
 		}
 	}
 
@@ -111,12 +116,12 @@ bool App::InitializeWindow()
 	return true;
 }
 
-void App::Update()
+void App::Update(const Timer& timer)
 {
-
+	
 }
 
-void App::Draw()
+void App::Draw(const Timer& timer)
 {
 
 }

@@ -5,6 +5,7 @@
 
 #include "assert.h"
 #include <exception>
+#include <format>
 
 #include "d3d12.h"
 #include "dxgi1_6.h"
