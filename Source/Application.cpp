@@ -21,7 +21,7 @@ bool App::Initialize()
 	if (!InitWindow()) return false;
 
 	m_renderer = new Renderer();
-	if (m_renderer->Initialize()) return false;
+	if (!m_renderer->Initialize()) return false;
 
 	MessageBox(0, L"Renderer Initialize done", 0, 0);
 	return true;

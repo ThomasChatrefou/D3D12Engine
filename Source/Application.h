@@ -13,6 +13,10 @@ public:
 
 	LRESULT ProcessMessage(HWND Hwnd, UINT message, WPARAM wparam, LPARAM lparam);
 
+	HWND GetMainWindow() { return m_mainWindow; }
+	int GetWindowWidth() { return m_windowWidth; }
+	int GetWindowHeight() { return m_windowHeight; }
+
 private:
 	static App* m_app;
 
@@ -20,7 +24,6 @@ private:
 	void InitializeVariables();
 	bool CreateWindowClass();
 	bool InitializeWindow();
-	bool InitDX();
 
 	void Update();
 	void Draw();
