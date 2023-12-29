@@ -1,6 +1,7 @@
 #include "PreCompiledHeaders.h"
 #include "Application.h"
 #include "Renderer.h"
+#include "Transform.h"
 
 LRESULT CALLBACK WindowProcess(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 App* App::m_app = nullptr;
@@ -118,6 +119,12 @@ void App::Update()
 void App::Draw()
 {
 
+}
+
+void App::TransformQuatTest()
+{
+	Transform transformClass;
+	transformClass.TransformTest();
 }
 
 #pragma endregion Private

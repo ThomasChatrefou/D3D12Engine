@@ -25,6 +25,8 @@ private:
 	bool CreateWindowClass();
 	bool InitializeWindow();
 
+	void TransformQuatTest();
+
 	void Update();
 	void Draw();
 

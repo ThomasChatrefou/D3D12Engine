@@ -199,7 +199,7 @@ void Transform::TransformTest() {
 		logFile << "Quaternion Base : " << x << " " << y << " " << z << " " << w << std::endl;
 	}
 	
-	Rotate(1, 1.5708, 0);
+	Rotate(1.0f, 1.5708f, 0.0f);
 
 	x = XMVectorGetX(qRot);
 	y = XMVectorGetY(qRot);
@@ -211,7 +211,7 @@ void Transform::TransformTest() {
 		logFile << "Quaternion After : " << x << " " << y << " " << z << " " << w << std::endl;
 	}
 
-	Rotate(-1, -1.5708,  0);
+	Rotate(-1.0f, -1.5708f,  0.0f);
 
 	x = XMVectorGetX(qRot);
 	y = XMVectorGetY(qRot);
